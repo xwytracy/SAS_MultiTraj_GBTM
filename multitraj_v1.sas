@@ -1,3 +1,6 @@
+Copyright (c) [2024] [Weiyi Xia]
+
+This software is licensed under the MIT License. For more details, see the LICENSE file.
 
 /* Test use
 %Let T=12;
@@ -103,7 +106,7 @@ data work.nlm_2y_starting;
 
 /**=========================================== Ref ===================================================**/
 /* 
-Jones, B. L., & Nagin, D. S. (2007). Advances in Group-Based Trajectory Modeling and an SAS Procedure for Estimating Them. Sociological Methods & Research, 35(4), 542–571. https://doi.org/10.1177/0049124106292364
+Jones, B. L., & Nagin, D. S. (2007). Advances in Group-Based Trajectory Modeling and an SAS Procedure for Estimating Them. Sociological Methods & Research, 35(4), 542â€“571. https://doi.org/10.1177/0049124106292364
 Extension 4
 */
 
