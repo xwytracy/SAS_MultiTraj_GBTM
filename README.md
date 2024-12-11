@@ -1,4 +1,13 @@
-# SAS_MultiTraj_GBTM
+## Authors
+
+- **Weiyi Xia** 
+- **Haiqun Lin**
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+
+## SAS_MultiTraj_GBTM
 This is the SAS macro that enables the group-based trajectory model with truncated normal measurements.
 
 The likelihood was constructed based on the finite mixture model. We build the likelihood function as
