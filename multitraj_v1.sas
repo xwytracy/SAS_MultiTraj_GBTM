@@ -1,6 +1,9 @@
-Copyright (c) [2024] [Weiyi Xia]
+/*
+ * Copyright (c) 2023-2024 Weiyi Xia and Dr. Haiqun Lin
+ *
+ * This software is licensed under the MIT License. See the LICENSE file for more details.
+ */
 
-This software is licensed under the MIT License. For more details, see the LICENSE file.
 
 /* Test use
 %Let T=12;
