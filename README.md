@@ -17,7 +17,7 @@ We use letters to denote different variable used in the analysis.
 
 The likelihood was constructed based on the finite mixture model. We build the likelihood function as
 
-$$P(\boldsymbol{Y})=\sum_{j=1}^J\pi_j\prod_{k=1}^Kp(Y_k=y_k|X=j)$$
+$$P(\boldsymbol{Y})=\sum_{j=1}^J\pi_j\prod_{p=1}{2}\prod_{k=1}^Kp(Y_k=y_k|X=j)$$
 
 
 ## Assumption
