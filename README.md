@@ -23,10 +23,11 @@ We use letters to denote different variables used in the analysis.
 
 #### Likelihood
 The likelihood was constructed based on the finite mixture model. We build the likelihood function as $$P(\boldsymbol{Y})=\sum_{j=1}^J\pi_j\prod_{p=1}^{2}{\prod_{k=1}^Kp(Y_k^p=y_k^p|X=j)}$$.
-The $p(y_k^p|X)$ can vary depending on the assumptions made and the study design. 
-- $p(y_k^p|X)$ can follow a Gaussian distribution if the observed manifest indicator takes a real value.
-- If the indicator is continuous but bounded by lower or upper limits (or both), it may follow a truncated normal distribution.
-- Other commonly used distributional assumptions include a Bernoulli distribution for binary indicators and a Poisson distribution for indicators that take non-negative integer values starting from 0.
+- The $p(y_k^p|X)$ can vary depending on the assumptions made and the study design. 
+  - $p(y_k^p|X)$ can follow a Gaussian distribution if the observed manifest indicator takes a real value.
+  - If the indicator is continuous but bounded by lower or upper limits (or both), it may follow a truncated normal distribution.
+  - Other commonly used distributional assumptions include a Bernoulli distribution for binary indicators and a Poisson distribution for indicators that take non-negative integer values starting from 0. These two types of the indicators are not currently supported in this macro.
+- The $\pi_j$ is the proportion part in the finite mixture model. It always follows a multinomial distribution and is constrained by $\sum_j{\pi_j}=1$. This quantity has a meaningful interpretation as the expected proportion of the class assignment.
 
 #### Assumption
 - Each indicator is assumed to be independent. $$P(Y_k^p=y_k^p|X=j)\perp P(Y_q^p=y_q^p|X=j)$$ for any $$k\neq q$$
