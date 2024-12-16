@@ -26,29 +26,29 @@ RUN;
 
 
 
-/*=================================Step 1: Load hyper parameter========================================*/
-%let class_all = A, B, C, D, E, F, G, H, I, J, K; /* Name of each class. (Don't change) */
+/*=================================Step 1.1: Load hyper parameter========================================*/
+%let class_all = A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z; /* Class label (Don't change.) */
 %Let class=3; /*Number of latent classes*/
 %Let order_model=3; /*the degree of the polynomial in the model. 1 - linear, 2 - quadratic, 3 - cubic*/
-%Let equal=T; /*Equal variance for each outcome across different classes, input T or F*/
+%Let equal=T; /*Equal variance across different classes for each trajectory, input T or F*/
+%Let Time=12; /*Number of time points for trajectory observations*/
 
-
-/*==============================Step 2: Run the model for each outcome================================*/
-/* Model 1 for HH */
+/*==============================Step 1.2: Run the model for each outcome================================*/
+/* Model 1 for Trajectory I */
 %nlmixed_1(T=12,LC=&class.,	Y=1,
 			/*Assign starting value or use existing parameter data file, the content in starting= will be added after parms in nlmixed*/
 			starting=%starting_value_alpha(class=&class.)
 					%starting_value_beta_sigma(class=&class.,outcome=1,order=&order_model.,equal_sigma=&equal.),
 			/*Define output file name*/
-			output=nlm_fix_HH&class.,order=&order_model.,equal_sigma=&equal.);
+			output=nlm_fix_1_&class.,order=&order_model.,equal_sigma=&equal.);
 
-/* Model 2 for INP */
+/* Model 2 for Trajectory II */
 %nlmixed_1(T=12,LC=&class.,	Y=2,
 			starting=%starting_value_alpha(class=&class.)
 					%starting_value_beta_sigma(class=&class.,outcome=2,order=&order_model.,equal_sigma=&equal.),
-		output=nlm_fix_INP&class.,order=&order_model.,equal_sigma=&equal.);
+		output=nlm_fix_2_&class.,order=&order_model.,equal_sigma=&equal.);
 
-/*==============================Step 3: Run the model for multi-traj model================================*/
+/*==============================Step  1.3: Run the model for multi-traj model================================*/
 /* 3.1 Generate starting value for multi-traj model*/
 data work.nlm_2y_starting;
  set nlm_fix_HH&class. nlm_fix_INP&class. ;
@@ -60,9 +60,9 @@ data work.nlm_2y_starting;
 %nlmixed_MultiTraj(T=12,LC=&class.,
 			/*Assign starting value or use existing parameter data file, the content in starting= will be added after parms in nlmixed*/
 			starting=%starting_value_alpha(class=&class.)/data=nlm_2y_starting,
-			output=nlm_fix_HH_INP&class.,order=&order_model.,equal_sigma=&equal.);
+			output=nlm_fix_multi_&class.,order=&order_model.,equal_sigma=&equal.);
 /* 3.3 Plot */
-%plot_prep(T=12,LC=&class.,result=nlm_fix_HH_INP&class.,order=&order_model.,equal_sigma=&equal.);
+%plot_prep(T=12,LC=&class.,result=nlm_fix_multi_&class.,order=&order_model.,equal_sigma=&equal.);
 
 
 %Let class=4; /*Number of latent class*/
