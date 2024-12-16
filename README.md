@@ -14,7 +14,7 @@ This is the SAS macro that enables the group-based multi-trajectory model with t
 #### Notation
 We use letters to denote different variables used in the analysis. 
 - $X$: A latent class variable representing different clusters based on observed trajectory patterns in the sample. Assume there are a total of $C$ classes, each with distinct trajectories. The variable $X$ can take values $1, 2, \ldots, C$.
-- $p$: The number of manifest variable trajectories included in the data analysis. In this SAS macro, it is assumed that $p = 2$.
+- $p$: The number of manifest variable trajectories included in the data analysis. In this SAS macro, it is assumed that $p = 1, 2$ (two trajectories).
 - $k$: A time indicator specifying the time point at which a measurement is recorded.
 - $Y_k^p$: The value of the manifest variable $Y^p$ observed at time $k$.
 
