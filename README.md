@@ -21,10 +21,8 @@ We use letters to denote different variables used in the analysis.
 ![TikZ Plot](./image.png)
 
 ### Likelihood
-The likelihood was constructed based on the finite mixture model. We build the likelihood function as
-$$P(\boldsymbol{Y})=\sum_{j=1}^J\pi_j\prod_{p=1}{2}\prod_{k=1}^Kp(Y_k=y_k|X=j)$$
-
-
+The likelihood was constructed based on the finite mixture model. We build the likelihood function as $$P(\boldsymbol{Y})=\sum_{j=1}^J\pi_j\prod_{p=1}^{2}{\prod_{k=1}^Kp(Y_k^p=y_k^p|X=j)}$$.
+The $p(y_k^p|X)$ can vary depending on the assumptions made and the study design. $p(y_k^p|X)$ can follow a Gaussian distribution if the observed manifest indicator takes a real value. If the indicator is continuous but bounded by lower or upper limits (or both), it may follow a truncated normal distribution. Other commonly used distributional assumptions include a Bernoulli distribution for binary indicators and a Poisson distribution for indicators that take non-negative integer values starting from 0.
 ### Assumption
 Each indicator is assumed to be independent of the equation. $$P(Y_k=y_k|X=j)\perp P(Y_p=y_p|X=j)$$ for any $$k\neq p$$
 
