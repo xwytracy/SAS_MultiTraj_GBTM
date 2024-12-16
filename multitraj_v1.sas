@@ -33,7 +33,7 @@ RUN;
 %Let equal=T; /*Equal variance for each outcome across different classes, input T or F*/
 
 
-/*==============================Step 2: Run the model for each outcome================================*/
+/*==============================Step 2: Run group-based trajectory model with single trajectory================================*/
 /* Model 1 for HH */
 %nlmixed_1(T=12,LC=&class.,	Y=1,
 			/*Assign starting value or use existing parameter data file, the content in starting= will be added after parms in nlmixed*/
@@ -48,7 +48,7 @@ RUN;
 					%starting_value_beta_sigma(class=&class.,outcome=2,order=&order_model.,equal_sigma=&equal.),
 		output=nlm_fix_INP&class.,order=&order_model.,equal_sigma=&equal.);
 
-/*==============================Step 3: Run the model for multi-traj model================================*/
+/*==============================Step 3: Run group-based trajectory model with multi trajectories based on the results from step 2 ================================*/
 /* 3.1 Generate starting value for multi-traj model*/
 data work.nlm_2y_starting;
  set nlm_fix_HH&class. nlm_fix_INP&class. ;
