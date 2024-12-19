@@ -33,6 +33,25 @@ The likelihood was constructed based on the finite mixture model. We build the l
 - Each indicator is assumed to be independent. $$P(Y_k^p=y_k^p|X=j)\perp P(Y_q^p=y_q^p|X=j)$$ for any $$k\neq q$$
 
 ### SAS Macro Manual
+%GBTM_SingleTraj(DATA,id,INDEP,VAR,LC,starting,order,equal_sigma,MAX,output,post_group);
+
+#### Macro variable
+`DATA` Data file to be analyzed. The current macro supports the use of wide-format data.
+`id` ID variable.
+`INDEP`=Time_1-Time_8,
+`VAR`=Y_1-Y_8,
+`LC`=3,
+`starting`= %starting_value_alpha(class=3),
+`order`=2,
+`equal_sigma`=T,
+`MAX`=200 200 200 200 200 200 200 200
+`output`=res,
+`post_group`=post_group
+#### Macro Output
+`output` Group based trajectory model fitting result. 
+`post_group` Predicted posterior group membership.
+`data_plot` 
+`averaged_membership`
 
 ### Reference
 Jones, B. L., & Nagin, D. S. (2007). Advances in Group-Based Trajectory Modeling and an SAS Procedure for Estimating Them. Sociological Methods & Research, 35(4), 542–571. https://doi.org/10.1177/0049124106292364
