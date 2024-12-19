@@ -33,6 +33,8 @@ RUN;
 %Let equal=T; /*Equal variance across different classes for each trajectory, input T or F*/
 %Let Time=12; /*Number of time points for trajectory observations*/
 
+
+
 /*==============================Step 2: Run group-based trajectory model with single trajectory================================*/
 /* Model 1 for Trajectory I */
 %nlmixed_1(T=&Time.,LC=&class.,	Y=1,
@@ -48,7 +50,9 @@ RUN;
 					%starting_value_beta_sigma(class=&class.,outcome=2,order=&order_model.,equal_sigma=&equal.),
 		output=nlm_fix_2_&class.,order=&order_model.,equal_sigma=&equal.);
 
+
 /*==============================Step 3: Run group-based trajectory model with multi trajectory based on the results form step 2 ================================*/
+
 /* 3.1 Generate starting value for multi-traj model*/
 data work.nlm_2y_starting;
  set nlm_fix_HH&class. nlm_fix_INP&class. ;
