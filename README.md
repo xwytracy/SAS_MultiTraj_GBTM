@@ -31,24 +31,26 @@ The likelihood was constructed based on the finite mixture model. We build the l
 
 #### Assumption
 - Each indicator is assumed to be independent. $$P(Y_k^p=y_k^p|X=j)\perp P(Y_q^p=y_q^p|X=j)$$ for any $$k\neq q$$
+- A constrained model. Joint class probability calculation? $\pi_j=Pr(X=j)$  (to be completed later)
 
 ### SAS Macro Manual
-%GBTM_SingleTraj(DATA,id,INDEP,VAR,LC,starting,order,equal_sigma,MAX,output,post_group);
+`%GBTM_SingleTraj(DATA,id,INDEP,VAR,LC,starting,order,equal_sigma,MAX,output,post_group)`;
 
 #### Macro variable
-`DATA` Data file to be analyzed. The current macro supports the use of wide-format data.
-`id` ID variable.
-`INDEP`=Time_1-Time_8,
-`VAR`=Y_1-Y_8,
-`LC`=3,
-`starting`= %starting_value_alpha(class=3),
-`order`=2,
-`equal_sigma`=T,
-`MAX`=200 200 200 200 200 200 200 200
-`output`=res,
-`post_group`=post_group
+`DATA` Data file to be analyzed. The current macro supports the use of wide-format data. e.g. `DATA=wide`.<br/>
+`ID` ID variable. This variable identifies the subject ID, and it is saved in the output file for future linkage between the predicted group and external variables.e.g. `ID=id`.<br/>
+`INDEP`Independent variables. e.g. `INDEP=Time_1-Time_8`.<br/>
+`VAR` Dependent variables. The number of dependent variables and the number of independent variables should match; e.g. `VAR=Y_1-Y_8`.<br/>
+`LC` Number of latent classes in the model.e.g. `LC=3`.<br/>
+`starting=` The initial values for the GBTM fitting iteration. For example,`%starting_value_alpha(class=3)` assigns a starting value of 0 to the proportion estimation for class 3 (indicating equal probability in class assignment). If not explicitly provided, the default starting value for the model parameters is set to 1. e.g. `starting= %starting_value_alpha(class=3) sigma_=10`.<br/>
+`order` Polynomial (0=intercept, 1=linear, 2=quadratic, 3=cubic) for the structural model. The current program assumes that all classes share the same polynomial value. e.g. `order=2`. <br/>
+`equal_sigma` (T=equal variance, F= unequal variance) This specifies whether the program assumes that the error term in the model has a consistent variance across the distribution. <br/>
+`MAX` Upper bounds for truncated normal distribution. e.g. `MAX=200 200 200 200 200 200 200 200`. <br/>
+The following statements describe how to save the results:
+`output` SAS data file name of the GBTM parameter coefficients estimation.<br/>
+`post_group` SAS data file name of the predicted posterior group membership after the model fitting. <br/>
 #### Macro Output
-`output` Group based trajectory model fitting result. <br/>
+`output` Group-based trajectory model fitting result. <br/>
 ![out_res](./sampleout/model_coef.png)<br/>
 `post_group` Predicted posterior group membership.<br/>
 ![table_post_grp](./sampleout/post_grp.png)<br/>
