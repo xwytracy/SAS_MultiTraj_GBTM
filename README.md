@@ -58,7 +58,8 @@ The following statements describe how to save the results:
 `data_plot` is generated based on the predicted value for each class and the averaged observation values weighted by the posterior group membership.<br/>
 ![plot](./sampleout/Plot.png)<br/>
 
-`averaged_membership`
+`averaged_membership` shows the predicted class group membership.<br/>
+![plot](./sampleout/avg_prgrp.png)<br/>
 
 ### Reference
 Jones, B. L., & Nagin, D. S. (2007). Advances in Group-Based Trajectory Modeling and an SAS Procedure for Estimating Them. Sociological Methods & Research, 35(4), 542–571. https://doi.org/10.1177/0049124106292364
