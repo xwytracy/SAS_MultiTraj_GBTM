@@ -48,14 +48,13 @@ The likelihood was constructed based on the finite mixture model. We build the l
 `output`=res,
 `post_group`=post_group
 #### Macro Output
-`output` Group based trajectory model fitting result. 
-![out_res](./sampleout/model_coef.png)
+`output` Group based trajectory model fitting result. <br/>
+![out_res](./sampleout/model_coef.png)<br/>
+`post_group` Predicted posterior group membership.<br/>
+![table_post_grp](./sampleout/post_grp.png)<br/>
 
-`post_group` Predicted posterior group membership.
-![table_post_grp](./sampleout/post_grp.png)
-
-`data_plot` is generated based on the predicted value for each class and the averaged observation values weighted by the posterior group membership.
-![plot](./sampleout/plot.png)
+`data_plot` is generated based on the predicted value for each class and the averaged observation values weighted by the posterior group membership.<br/>
+![plot](./sampleout/Plot.png)<br/>
 
 `averaged_membership`
 
