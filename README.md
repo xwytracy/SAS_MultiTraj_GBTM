@@ -26,7 +26,7 @@ The likelihood was constructed based on the finite mixture model. We build the l
 - The $p(y_k^p|X)$ can vary depending on the assumptions made and the study design. 
   - $p(y_k^p|X)$ can follow a Gaussian distribution if the observed manifest indicator takes a real value.
   - If the indicator is continuous but bounded by lower or upper limits (or both), it may follow a truncated normal distribution.
-  - Other commonly used distributional assumptions include a Bernoulli distribution for binary indicators and a Poisson distribution for indicators that take non-negative integer values starting from 0. These two types of the indicators are not currently supported in this macro.
+  - Other commonly used distributional assumptions include a Bernoulli distribution for binary indicators and a Poisson distribution for indicators that take non-negative integer values starting from 0. These two types of indicators are not currently supported in this macro.
 - The $\pi_j$ is the proportion part in the finite mixture model. It always follows a multinomial distribution and is constrained by $\sum_j{\pi_j}=1$. This quantity has a meaningful interpretation as the expected proportion of the class assignment.
 
 #### Assumption
@@ -49,8 +49,14 @@ The likelihood was constructed based on the finite mixture model. We build the l
 `post_group`=post_group
 #### Macro Output
 `output` Group based trajectory model fitting result. 
+![out_res](./sampleout/model_coef.png)
+
 `post_group` Predicted posterior group membership.
-`data_plot` 
+![table_post_grp](./sampleout/post_grp.png)
+
+`data_plot` is generated based on the predicted value for each class and the averaged observation values weighted by the posterior group membership.
+![plot](./sampleout/plot.png)
+
 `averaged_membership`
 
 ### Reference
