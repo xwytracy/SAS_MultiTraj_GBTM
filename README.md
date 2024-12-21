@@ -19,7 +19,7 @@ We use letters to denote different variables used in the analysis.
 - $Y_t^k$: The manifest variable $Y_t^p$ observed at time $k$.
 
 #### DAG
-![TikZ Plot](./image.png)
+![TikZ Plot](./image/image.png)
 
 #### Likelihood
 The likelihood was constructed based on the finite mixture model. We build the likelihood function as $$P(\boldsymbol{Y})=\sum_{j=1}^J\pi_j\prod_{p=1}^{2}{\prod_{k=1}^Kp(Y_k^p=y_k^p|X=j)}$$.
