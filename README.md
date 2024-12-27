@@ -15,7 +15,7 @@ This is the SAS macro that enables the group-based multi-trajectory model with t
 We use letters to denote different variables used in the analysis. 
 - $X$: A latent class variable representing different clusters based on observed trajectory patterns in the sample. Assume there are a total of $C$ classes, each with distinct trajectories. The variable $X$ can take values $1, 2, \ldots, C$.
 - $K$: The number of manifest variable trajectories included in the data analysis. In this SAS macro, it is assumed that $p = 1, 2$ (two trajectories).
-- $t$: A time variable specifying the time point at which a measurement is recorded.
+- $t$: A time variable specifying the time at which a measurement is recorded.
 - $Y_t^k$: The manifest variable $Y_t^p$ observed at time $k$.
 
 #### DAG
@@ -40,7 +40,7 @@ The likelihood was constructed based on the finite mixture model. We build the l
 `DATA` Data file to be analyzed. The current macro supports the use of wide-format data. e.g. `DATA=wide`.<br/>
 `ID` ID variable. This variable identifies the subject ID, and it is saved in the output file for future linkage between the predicted group and external variables.e.g. `ID=id`.<br/>
 `INDEP`Independent variables. e.g. `INDEP=Time_1-Time_8`.<br/>
-`VAR` Dependent variables. The number of dependent variables and the number of independent variables should match; e.g. `VAR=Y_1-Y_8`.<br/>
+`VAR` Dependent variables. The number of dependent variables and the number of independent variables should match, e.g. `VAR=Y_1-Y_8`.<br/>
 `LC` Number of latent classes in the model.e.g. `LC=3`.<br/>
 `starting=` The initial values for the GBTM fitting iteration. For example,`%starting_value_alpha(class=3)` assigns a starting value of 0 to the proportion estimation for class 3 (indicating equal probability in class assignment). If not explicitly provided, the default starting value for the model parameters is set to 1. e.g. `starting= %starting_value_alpha(class=3) sigma_=10`.<br/>
 `order` Polynomial (0=intercept, 1=linear, 2=quadratic, 3=cubic) for the structural model. The current program assumes that all classes share the same polynomial value. e.g. `order=2`. <br/>
@@ -58,8 +58,10 @@ The following statements describe how to save the results:
 `data_plot` is generated based on the predicted value for each class and the averaged observation values weighted by the posterior group membership.<br/>
 ![plot](./sampleout/Plot.png)<br/>
 
-`averaged_membership` shows the predicted class group membership.<br/>
+`Summary` shows the summary statistics of model fitting, including the count of participants assigned to each class label and the estimated prior and averaged predicted posterior probability of the class assignment. Two model-fitting evaluation matrices are calculated based on the summary statistics - the average posterior probability of assignment (APPA), odds of correct classification (OCC). 
+<br/>
 ![plot](./sampleout/avg_prgrp.png)<br/>
 
 ### Reference
 Jones, B. L., & Nagin, D. S. (2007). Advances in Group-Based Trajectory Modeling and an SAS Procedure for Estimating Them. Sociological Methods & Research, 35(4), 542–571. https://doi.org/10.1177/0049124106292364
+Klijn SL, Weijenberg MP, Lemmens P, van den Brandt PA, Lima Passos V. Introducing the fit-criteria assessment plot – A visualisation tool to assist class enumeration in group-based trajectory modelling. Statistical Methods in Medical Research. 2017;26(5):2424-2436. doi:10.1177/0962280215598665
