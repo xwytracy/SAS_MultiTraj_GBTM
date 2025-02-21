@@ -14,17 +14,17 @@ This SAS macro allows users to perform group-based (multi-)trajectory analysis w
 #### Notation
 We use letters to denote different variables used in the analysis. 
 - $X$: A latent class variable representing different clusters based on observed trajectory patterns. There are $C$ distinct classes, with $X$ taking values $1, 2, \ldots, C$.
-- $K$: The number of manifest variable trajectories included in the analysis. This SAS macro currently supports $p = 1, 2$ (two trajectories).
+- $P$: The number of manifest variable trajectories included in the analysis. This SAS macro currently supports $p = 1, 2$ (two trajectories).
 - $t$: A time variable indicating when a measurement is recorded.
-- $Y_t^k$: The manifest variable $Y$ observed at time $t$ for the $k$th trajectory.
+- $Y_t^p$: The manifest variable $Y$ observed at time $t$ for the $p$ th trajectory.
 
 #### DAG
 ![TikZ Plot](./image/image.png)
 
 #### Likelihood
-The likelihood was constructed based on the finite mixture model. We build the likelihood function as $$P(\boldsymbol{Y})=\sum_{j=1}^J\pi_j\prod_{p=1}^{2}{\prod_{k=1}^Kp(Y_k^p=y_k^p|X=j)}$$.
-- $p(y_k^p|X)$ varies based on assumptions and study design:
-  - $p(y_k^p|X)$ can follow a Gaussian distribution if the observed manifest indicator takes a real value.
+The likelihood was constructed based on the finite mixture model. We build the likelihood function as $$P(\boldsymbol{Y})=\sum_{j=1}^J\pi_j\prod_{p=1}^{2}{\prod_{t=1}^Kp(Y_t^p=y_t^p|X=j)}$$.
+- $p(y_t^p|X)$ varies based on assumptions and study design:
+  - $p(y_t^p|X)$ can follow a Gaussian distribution if the observed manifest indicator takes a real value.
   - If the indicator is continuous but bounded by lower or upper limits (or both), it may follow a truncated normal distribution.
   - Common alternative distributions include Bernoulli (for binary indicators) and Poisson (for non-negative integer indicators starting from 0), though these are not currently supported in this macro
 - The parameter $\pi_j$ represents the proportion of class membership in the finite mixture model. It follows a multinomial distribution, constrained by $\sum_j{\pi_j}=1$. This quantity has a meaningful interpretation as the expected proportion of the class assignment.
