@@ -24,7 +24,7 @@ We use letters to denote different variables used in the analysis.
 #### Likelihood
 The likelihood was constructed based on the finite mixture model. We build the likelihood function as $$P(\boldsymbol{Y})=\sum_{j=1}^J\pi_j\prod_{p=1}^{2}{\prod_{t=1}^Kp(Y_t^p=y_t^p|X=j)}$$.
 - $p(y_t^p|X)$ varies based on assumptions and study design:
-  - $p(y_t^p|X)$ can follow a Gaussian distribution if the observed manifest indicator takes a real value.
+  - $p(y_t^p|X)$ can follow a Gaussian distribution if the observed manifest indicator takes a continuous value.
   - If the indicator is continuous but bounded by lower or upper limits (or both), it may follow a truncated normal distribution.
   - Common alternative distributions include Bernoulli (for binary indicators) and Poisson (for non-negative integer indicators starting from 0), though these are not currently supported in this macro
 - The parameter $\pi_j$ represents the proportion of class membership in the finite mixture model. It follows a multinomial distribution, constrained by $\sum_j{\pi_j}=1$. This quantity has a meaningful interpretation as the expected proportion of the class assignment.
@@ -44,7 +44,7 @@ The likelihood was constructed based on the finite mixture model. We build the l
 `LC`: Number of latent classes in the model. e.g.,`LC=3`.<br/>
 `starting=`: Initial values for GBTM iteration. Defaults to 1 if unspecified. e.g., `starting= %starting_value_alpha(class=3) sigma_=10` assigns a starting value of 0 to the proportion estimation for class 3 (indicating equal probability in-class assignment) and the standard deviance of the manifest variable being 10. If not explicitly provided, the default starting value for the model parameters is set to 1. <br/>
 `order`: Polynomial order in the structural model (0=intercept, 1=linear, 2=quadratic, 3=cubic). The current program assumes that all classes share the same polynomial value. e.g. `order=2`. <br/>
-`equal_sigma`: Whether variances of the manifest indicators is equal (T) or unequal (F) across classes. <br/>
+`equal_sigma`: Whether the variances of the manifest indicators are equal (T) or unequal (F) across classes. <br/>
 `MAX`: Upper bounds for truncated normal distribution. e.g. `MAX=200 200 200 200 200 200 200 200`. <br/>
 
 The following statements describe how to save the results:<br/>
