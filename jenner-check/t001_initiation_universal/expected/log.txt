@@ -1,0 +1,23 @@
+NOTE: Jenner v1.5.30 (build v1.5.30+unknown.20260715T062217Z.x86_64-unknown-linux-gnu)
+
+NOTE: Option OBS changed to 100.
+NOTE: DATA base_file_srs
+
+NOTE: Processing inline DATALINES (3 lines)
+
+NOTE: Read 3 rows from DATALINES.
+NOTE: Wrote base_file_srs (3 rows, 37 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA check_arrays
+
+
+NOTE: Read 3 rows from base_file_srs.
+NOTE: Wrote check_arrays (3 rows, 4 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC PRINT data=check_arrays
+
+NOTE: PROC PRINT completed: 3 observations printed, 4 variables

@@ -1,0 +1,7 @@
+{
+  "bundle": "t002_iml_colsum_avg",
+  "source_file": "macro_multitraj_v1.sas",
+  "source_blob_sha": "f4a156bbe1052652af3a675953a705fc80bdad34",
+  "source_commit": "0ed9fd7589178270c204084b28b6b7f80054ae1d",
+  "notes": "Exercises the PROC IML posterior-weighted-average block from plot_prep() (lines 294-309) unmodified: a colsum() IML function plus a matrix multiply that turns per-subject posterior class-membership probabilities into a class-weighted average trajectory at each time point. Mock data stands in for base_file_srs (3 subjects, 12 time points of one trajectory) and pred_membership_y (a 3x2 posterior-membership matrix, rows summing to 1, standing in for what nlmixed_1()/Posterior() would normally produce)."
+}

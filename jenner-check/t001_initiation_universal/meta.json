@@ -1,0 +1,7 @@
+{
+  "bundle": "t001_initiation_universal",
+  "source_file": "macro_multitraj_v1.sas",
+  "source_blob_sha": "f4a156bbe1052652af3a675953a705fc80bdad34",
+  "source_commit": "0ed9fd7589178270c204084b28b6b7f80054ae1d",
+  "notes": "Exercises initiation_universal(T) (lines 85-89) unmodified: declares the X[]/Y1[]/Y2[] trajectory arrays plot_prep() sets up before scoring each subject. Mock input mirrors the variable-naming convention (quar1-quar12, Q1HH-Q12HH, QINP1-QINP12) the macro's own array statements expect from base_file_srs; a small DATA step sums each array to confirm the declared arrays read the right columns."
+}
